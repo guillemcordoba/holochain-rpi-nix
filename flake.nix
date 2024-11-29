@@ -1,7 +1,7 @@
 {
   description = "Template for Holochain app development";
 
-  inputs = { holonix.url = "github:holochain/holonix/main-0.3"; };
+  inputs = { holonix.url = "github:holochain/holonix/main-0.4"; };
 
   nixConfig = {
     extra-substituters = [
@@ -21,7 +21,7 @@
       perSystem = { inputs', config, pkgs, system, lib, ... }: {
         packages.holochain = inputs'.holonix.packages.holochain.override {
           cargoExtraArgs =
-            " --no-default-features --features sqlite-encrypted,tx5";
+            " --no-default-features --features sqlite-encrypted,tx5,wasmer_sys";
         };
       };
     };
